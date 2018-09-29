@@ -35,16 +35,11 @@ const SessionStore = require('express-mysql-session');
 const mysqlStore = new SessionStore(config.get('database'));
 const passport = require('passport');
 const errorHandler = requireApp('routes/errorHandler');
-const initPassport = requireApp('passport/init');
-const localeMiddleware = requireApp('middleware/localeMiddleware');
 const requestLanguage = require('express-request-language');
 const _ = require('lodash');
 const I18n = require('i18n-2');
 const i18nHelper = requireApp('lib/i18n-helper');
-const emailProvider = requireApp('lib/emailProvider');
 const port = 5000;
-
-emailProvider.setup();
 
 const app = new Express();
 app.set('sessionStore', mysqlStore);
@@ -117,11 +112,9 @@ app.use(expressSession({
 	},
 	name: 'user_session'
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-initPassport(passport);
 
-app.use(localeMiddleware);
+
+
 
 const routesServices = requireApp('routes/index')(passport);
 app.use('/', routesServices);
@@ -136,18 +129,6 @@ function handleRender(req, res) {
 	const user = {
 		fullName: 'Guest'
 	};
-	if (req.user) {
-		user.email = req.user.EmailAddress.email;
-		user.fullName = req.user.lastName + ' ' + req.user.firstName;
-		user.isAuthenticated = true;
-		user.roles = _.map(req.user.roles, (role) => {
-			return {
-				name: role.name,
-				tenantId: role.Tenant && role.Tenant.id,
-				tenantName: role.Tenant && role.Tenant.name
-			}
-		});
-	}
 	// Compile an initial state
 	const preloadedState = { user };
 

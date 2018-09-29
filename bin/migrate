@@ -31,9 +31,9 @@ const options = {
 	command: argv.cmd || 'migrate',
 	host: argv.host || 'us-cdbr-iron-east-05.cleardb.net',
 	port: argv.port || 3306,
-	database: argv.database || 'heroku_219ef2c5e28088e',
-	username: argv.username || 'b20b71d564db04',
-	password: argv.password || '78040612',
+	database: argv.database || 'parser',
+	username: argv.username || 'root',
+	password: argv.password || '1111',
 	outoforder: argv.outoforder || false
 };
 

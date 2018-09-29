@@ -8,9 +8,14 @@ module.exports = {
 	database: {
 		host: 'localhost',
 		user: 'root',
-		password: 'password32R',
+		password: '1111',
 		port: null,
-		database: 'reactTemplate'
+		database: 'parser'
+	},
+	defaultAddress: {
+		url: 'http://localhost:3000',
+		protocol: 'http',
+		host: 'localhost'
 	},
 	email: {
 		fromName: 'Webpack-react',

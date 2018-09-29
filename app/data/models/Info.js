@@ -1,20 +1,27 @@
 const moment = require('moment-timezone');
 
 module.exports = function (sequelize, DataTypes) {
-	return sequelize.define('Tenant', {
-		name: {
+	return sequelize.define('Info', {
+		header: {
 			type: DataTypes.STRING,
 			validate: {
 				notEmpty: true
 			}
-		}
-	}, {
-		tableName: 'Tenant',
-		classMethods: {
-			associate: function (db) {
-				db.Tenant.hasMany(db.Contact);
-			}
 		},
+        imagePath: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        description: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        }
+	}, {
+		tableName: 'Info',
 		getterMethods: {
 			createdAtRendered: function () {
 				const createdAt = moment(this.createdAt).tz('Europe/Berlin');
