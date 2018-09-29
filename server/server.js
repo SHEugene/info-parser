@@ -1,4 +1,6 @@
 /* eslint-disable no-console, no-use-before-define */
+
+
 require('babel-polyfill');
 global.requireApp = function (path) {
 	return require('../app/' + path);
@@ -26,6 +28,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import routes from '../client/routes'
 const bunyanExpressLogger = require('express-bunyan-logger');
 const logger = lugg(config.get('project.name'));
+const parser = requireApp('lib/scheduled/parser');
 requireApp('data/models');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -89,7 +92,6 @@ app.set('view engine', 'jade');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 app.use(requestLanguage({
 	languages: ['ua', 'en'],
 	cookie: {
@@ -112,8 +114,6 @@ app.use(expressSession({
 	},
 	name: 'user_session'
 }));
-
-
 
 
 const routesServices = requireApp('routes/index')(passport);
@@ -167,6 +167,7 @@ function renderFullPage(html, preloadedState) {
     </html>
     `
 }
+parser.default.start();
 
 app.listen(process.env.PORT || port, (error) => {
     if (error) {
