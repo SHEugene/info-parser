@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<!-- NAME: 1 COLUMN -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{SUBJECT}}</title>
+
+	<style type="text/css">
+		body {
+			{{#if BRANDING.recipientRole}}
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			{{else}}
+			font-family: 'Open Sans', 'Segoe UI', 'Tahoma', sans-serif;
+			{{/if}}
+			font-size: 14px;
+			color: #335333;
+		}
+		body,
+		#bodyTable,
+		#bodyCell {
+			height: 100% !important;
+			margin: 0;
+			padding: 0;
+			width: 100% !important;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		td {
+			padding: 0px;
+		}
+		img,
+		a img {
+			border: 0;
+			outline: none;
+			text-decoration: none;
+		}
+		p {
+			margin: 1em 0;
+			padding: 0;
+		}
+		a {
+			word-wrap: break-word;
+		}
+		table,
+		td {
+			mso-table-lspace: 0pt;
+			mso-table-rspace: 0pt;
+		}
+		#outlook a {
+			padding: 0;
+		}
+		img {
+			-ms-interpolation-mode: bicubic;
+		}
+		body,
+		table,
+		td,
+		p,
+		a,
+		li,
+		blockquote {
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+		#bodyCell {
+			padding: 20px;
+		}
+		.mcnImage {
+			vertical-align: bottom;
+		}
+
+		/*
+	@tab Page
+	@section background style
+	@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+	*/
+		body,
+		#bodyTable {
+			{{#if BRANDING.pageBgColor}}
+			background-color: {{BRANDING.pageBgColor}}
+			{{else}}
+			background-color: white;
+			{{/if}}
+		}
+		/*
+	@tab Page
+	@section background style
+	@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+	*/
+
+		#bodyCell {
+			border-top: 0;
+		}
+		/*
+	@tab Page
+	@section email border
+	@tip Set the border for your email.
+	*/
+
+		#templateContainer {
+			border: 0;
+		}
+		/*
+	@tab Preheader
+	@section preheader style
+	@tip Set the background color and borders for your email's preheader area.
+	*/
+
+		#templatePreheader {
+			{{#if BRANDING.navigationBgColor}}
+				background-color: {{BRANDING.navigationBgColor}};
+			{{else}}
+				background-color: #2DA;
+			{{/if}}
+			{{#if BRANDING.navigationTextColor}}
+				color: {{BRANDING.navigationTextColor}};
+			{{else}}
+				color: #1a1aff;
+			{{/if}}
+			{{#if BRANDING.navigationBgImage}}
+				background-image: url({{BRANDING.navigationBgImage}});
+			{{/if}}
+			{{#if BRANDING.recipientRole}}
+			font-size: 16px;
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			font-weight: bold;
+			{{else}}
+			font-size: 19px;
+			font-family: 'Open Sans Condensed', 'Franklin Gothic Bold', sans-serif;
+			font-weight: bold;
+			{{/if}}
+			border-top: 0;
+		}
+		.main-content {
+			padding: 16px 16px 16px 16px;
+		}
+		.list-item {
+			border: 1px solid #E6EDED;
+			background-color: #1a1aff;
+			padding: 8px 16px 8px 16px;
+		}
+		.list-item a {
+			color: #353;
+			text-decoration: none;
+		}
+		.full-width {
+			width: 100%;
+		}
+		.bodyContainer .cta-text-color,
+		.bodyContainer .cta-text-color a {
+			{{#if BRANDING.ctaBgColor}}
+				color: {{BRANDING.ctaBgColor}};
+			{{else}}
+				color: #1696A4;
+			{{/if}}
+		}
+		.bodyContainer .cta-container {
+			text-align: center;
+			padding-top: 16px;
+		}
+		.bodyContainer .cta-container.in-between {
+			padding-bottom: 16px;
+		}
+		.bodyContainer .cta-container a,
+		.bodyContainer a.cta-button {
+			{{#if BRANDING.ctaBgColor}}
+				background-color: {{BRANDING.ctaBgColor}};
+				color: {{BRANDING.ctaTextColor}};
+			{{else}}
+				background-color: #1696A4;
+				color: #1a1aff;
+			{{/if}}
+			text-decoration: none;
+			{{#if BRANDING.recipientRole}}
+			text-transform: none;
+			{{else}}
+			text-transform: uppercase;
+			font-family: 'Open Sans Condensed', 'Segoe UI', Tahoma, sans-serif;
+			font-weight: bold;
+			{{/if}}
+			font-size: 15px;
+			line-height: 36px;
+			padding: 9px 16px 9px 16px;
+			border-radius: 2px;
+			-moz-border-radius: 2px;
+			-o-border-radius: 2px;
+			-webkit-border-radius: 2px;
+			-ms-border-radius: 2px;
+		}
+		.sm-margin {
+			display: inline-block;
+			margin-bottom: 8px;
+		}
+		/*
+	@tab Header
+	@section header style
+	@tip Set the background color and borders for your email's header area.
+	*/
+
+		#templateHeader {
+			background-color: #ffff00;
+			border-top: 0;
+			border-bottom: 0;
+		}
+		/*
+	@tab Body
+	@section body style
+	@tip Set the background color and borders for your email's body area.
+	*/
+
+		#templateBody {
+			border-top: 0;
+			border-bottom: 0;
+		}
+
+		.text-centered {
+			text-align: center;
+		}
+		strong {
+			font-weight: bold;
+		}
+		em {
+			font-style: italic;
+		}
+		.box {
+			width: 100%;
+			background-color: #1a1aff;
+			border: 1px solid #E6EDED;
+		}
+		.box-user-info {
+			padding: 0px 0px 0px 8px;
+		}
+		.box-padding {
+			padding: 16px;
+		}
+		.box-header {
+			padding: 0px 0px 8px 0px;
+		}
+		.box-avatar {
+			width: 40px;
+			height: 40px;
+			vertical-align: top;
+		}
+		.box-avatar img {
+			border: 0px solid #1a1aff;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+		}
+		.box-avatar .no-avatar {
+			border: 0px solid #ffffff;
+			border-radius: 50%;
+			width: 40px;
+			height:40px;
+			background-color: #DDDDDD;
+		}
+		.box-footer {
+			width: 100%;
+			background-color: #EEEEEE;
+			border: 1px solid #E6EDED;
+			border-top: 0px;
+		}
+		.text-table td {
+			vertical-align: text-bottom;
+		}
+		.text-table td:not(:last-child) {
+			padding-right: 8px;
+		}
+		.text-table--listing td:not(:last-child) {
+			font-weight: bold;
+		}
+		.manager-digest-item {
+			font-size: 20px;
+			font-weight: bold;
+		}
+		/*
+	@tab Body
+	@section body link
+	@tip Set the styling for your email's body links. Choose a color that helps them stand out from your text.
+	*/
+
+		.bodyContainer a {
+			color: #0d7270;
+			font-weight: normal;
+			text-decoration: underline;
+		}
+		/*
+	@tab Footer
+	@section footer style
+	@tip Set the background color and borders for your email's footer area.
+	*/
+
+		#templateFooter {
+			background-color: #C7C7C7;
+			border-top: 1px solid #cccccc;
+			border-bottom: 0;
+		}
+		/*
+	@tab Footer
+	@section footer text
+	@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+	*/
+
+		.footerContainer p {
+			color: #606060;
+			font-family: Helvetica;
+			font-size: 11px;
+			line-height: 125%;
+			text-align: left;
+		}
+		/*
+	@tab Footer
+	@section footer link
+	@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+	*/
+
+		.footerContainer a {
+			color: #606060;
+			font-weight: normal;
+			text-decoration: underline;
+		}
+
+		.header-image-wrap {
+			position: relative;
+		}
+
+		.header-image {
+			display: block;
+			max-width: 600px;
+			width: 100%;
+			margin: 0px;
+		}
+
+		.header-image-caption {
+			background: rgba(5, 8, 64, 4);
+			color: #fff;
+			padding: 5px
+		}
+		.header-image-caption--bottom {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			left: 0;
+		}
+
+		@media only screen and (max-width: 600px) {
+			body,
+			table,
+			td,
+			p,
+			a,
+			li,
+			blockquote {
+				-webkit-text-size-adjust: none !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			body {
+				width: 100% !important;
+				min-width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[id=bodyCell] {
+				padding: 10px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			table[class=mcnTextContentContainer] {
+				width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			table[class=mcnBoxedTextContentContainer] {
+				width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			table[class=mcpreview-image-uploader] {
+				width: 100% !important;
+				display: none !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			img[class=mcnImage] {
+				width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			table[class=mcnImageGroupContentContainer] {
+				width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageGroupContent] {
+				padding: 9px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageGroupBlockInner] {
+				padding-bottom: 0 !important;
+				padding-top: 0 !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			tbody[class=mcnImageGroupBlockOuter] {
+				padding-bottom: 9px !important;
+				padding-top: 9px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			table[class=mcnCaptionTopContent],
+			table[class=mcnCaptionBottomContent] {
+				width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			table[class=mcnCaptionLeftTextContentContainer],
+			table[class=mcnCaptionRightTextContentContainer],
+			table[class=mcnCaptionLeftImageContentContainer],
+			table[class=mcnCaptionRightImageContentContainer],
+			table[class=mcnImageCardLeftTextContentContainer],
+			table[class=mcnImageCardRightTextContentContainer] {
+				width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageCardLeftImageContent],
+			td[class=mcnImageCardRightImageContent] {
+				padding-right: 18px !important;
+				padding-left: 18px !important;
+				padding-bottom: 0 !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageCardBottomImageContent] {
+				padding-bottom: 9px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageCardTopImageContent] {
+				padding-top: 18px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageCardLeftImageContent],
+			td[class=mcnImageCardRightImageContent] {
+				padding-right: 18px !important;
+				padding-left: 18px !important;
+				padding-bottom: 0 !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageCardBottomImageContent] {
+				padding-bottom: 9px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnImageCardTopImageContent] {
+				padding-top: 18px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=mcnBoxedTextContentColumn] {
+				padding-left: 18px !important;
+				padding-right: 18px !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			/*
+	@tab Mobile Styles
+	@section template width
+	@tip Make the template fluid for portrait or landscape view adaptability. If a fluid layout doesn't work for you, set the width to 300px instead.
+	*/
+			table[id=templateContainer],
+			table[id=templatePreheader],
+			table[id=templateHeader],
+			table[id=templateBody],
+			table[id=templateFooter] {
+				/*@tab Mobile Styles
+@section template width
+@tip Make the template fluid for portrait or landscape view adaptability. If a fluid layout doesn't work for you, set the width to 300px instead.*/
+				max-width: 600px !important;
+				width: 100% !important;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			td[class=footerContainer] a[class=utilityLink] {
+				display: block !important;
+			}
+		}
+	</style>
+</head>
+
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+	<center>
+		<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+			<tr>
+				<td align="center" valign="top" id="bodyCell">
+					<!-- BEGIN TEMPLATE // -->
+					<table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
+						<tr>
+							<td align="center" valign="top">
+								<!-- BEGIN PREHEADER // -->
+								<table border="0" cellpadding="0" cellspacing="0" width="600" id="templatePreheader">
+									<tr>
+										<td valign="top" class="mcnTextBlockInner" style="padding:0px 16px;">
+											<table style="width:100%">
+												<tr style="height:64px">
+													<td>
+														{{#if PREHEADER}}
+															{{{PREHEADER}}}
+														{{/if}}
+													</td>
+													<td style="width: 100px">
+														<div style="text-align: right;">
+															<a href="http://localhost:3001" target="_blank">
+																<img align="none" height="39"
+																	src={{#if BRANDING.companyLogo}}{{BRANDING.companyLogo}}{{else}}"http://localhost:3001/public/image/main-logo-color.svg"{{/if}}
+																	style="height: 39px; margin: 0px; float: right;">
+															</a>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+								<!-- // END PREHEADER -->
+							</td>
+						</tr>
+						{{#if HEADERIMAGE_URL}}
+						<tr>
+							<td align="center" valign="top">
+								<!-- BEGIN HEADER IMAGE // -->
+								<table border="0" cellpadding="0" cellspacing="0" width="100%">
+									<tr>
+										<td valign="top" class="header-image-wrap">
+											<img align="none" src="{{HEADERIMAGE_URL}}" class="header-image"/>
+											{{#if HEADERIMAGE_CAPTION}}
+											<div class="header-image-caption header-image-caption--bottompos">{{HEADERIMAGE_CAPTION}}</div>
+											{{/if}}
+										</td>
+									</tr>
+								</table>
+								<!-- // END HEADER IMAGE -->
+							</td>
+						</tr>
+						{{else if HEADERIMAGE_CAPTION}}
+						<tr>
+							<td align="center" valign="top">
+								<!-- BEGIN HEADER IMAGE // -->
+								<table border="0" cellpadding="0" cellspacing="0" width="100%">
+									<tr>
+										<td valign="top" class="header-image-wrap">
+											<div class="header-image-caption">{{HEADERIMAGE_CAPTION}}</div>
+										</td>
+									</tr>
+								</table>
+								<!-- // END HEADER IMAGE -->
+							</td>
+						</tr>
+						{{/if}}
+						<tr>
+							<td align="center" valign="top">
+								<!-- BEGIN BODY // -->
+								<table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+									<tr>
+										<td valign="top" class="bodyContainer">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+												<tbody class="mcnTextBlockOuter">
+													<tr>
+														<td valign="top" class="mcnTextBlockInner">
+
+															<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
+																<tbody>
+																	<tr>
+
+																		<td valign="top">
+																			<div mc:edit="main" class="main-content">{{{MAIN}}}</div>
+																			{{#if INVITATION}}
+																				<br>
+																				{{{INVITATION}}}
+																			{{/if}}
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</table>
+								<!-- // END BODY -->
+							</td>
+						</tr>
+						<tr>
+							<td align="center" valign="top">
+								<!-- BEGIN FOOTER // -->
+								<table border="0" cellpadding="0" cellspacing="0" width="600" id="templateFooter">
+									<tr>
+										<td valign="top" class="footerContainer">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+												<tbody class="mcnTextBlockOuter">
+													<tr>
+														<td valign="top" class="mcnTextBlockInner">
+
+															<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
+																<tbody>
+																	<tr>
+
+																		<td valign="top" style="padding: 16px 16px; text-align: center;">
+																			{{#if BRANDING.companyName}}Diese E-Mail ist ein Service von {{BRANDING.companyName}}.<br>{{/if}}
+																			{{#if ISREGISTERED}}
+																				{{#if UNSUBSCRIBEREGISTERED}}
+																					{{{UNSUBSCRIBEREGISTERED}}}
+																				{{/if}}
+																			{{^}}
+																				{{#if UNSUBSCRIBE_URL}}
+																					<a href="{{{UNSUBSCRIBE_URL}}}">Ich möchte keine E-Mails von casavi mehr erhalten</a>
+																				{{/if}}
+																			{{/if}}
+																			<br>
+																			<br>
+																			<a href="http://localhost:3001">Домашня сторінка</a>
+																			<br>
+																			<a href="http://localhost:3001"><img src="http://localhost:3001/public/image/main-logo-color.svg" style="width: 100px; height: 23px; margin: 5px" /></a>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</table>
+								<!-- // END FOOTER -->
+							</td>
+						</tr>
+					</table>
+					<!-- // END TEMPLATE -->
+				</td>
+			</tr>
+		</table>
+	</center>
+</body>
+
+</html>

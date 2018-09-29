@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+const argv = require('minimist')(process.argv.slice(2));
+const path = require('path');
+const prompt = require('prompt');
+const childprocess = require('child_process');
+const _ = require('lodash');
+
+if (argv.help || argv.h) {
+	console.log('Usage: ' + path.basename(process.argv[1]) + ' [options]');
+	console.log('Connects to a MySQL server and performs the flyway command.');
+	console.log('You can either use a config file with the next two options or supply the');
+	console.log('connection information via arguments.');
+	console.log('--config <config> Point to a json which contains stages in the root object');
+	console.log('                  and below those stages configurations for mysql connections');
+	console.log('                  (see below).');
+	console.log('--stage <stage>   Stage to select from in the given config file.');
+	console.log('OR: ');
+	console.log('--command         Flyway command to execute. One of migrate, init, clean. Default: migrate');
+	console.log('--host <host>     Default: 127.0.0.1');
+	console.log('--port <port>     Default: 3306');
+	console.log('--username        Default: root');
+	console.log('--password        Default: no password used');
+	console.log('--database        Default: casavi');
+	console.log('--outOfOrder      Default: false');
+	process.exit(0);
+}
+
+const options = {
+	config: argv.config ? path.join(__dirname, '..', argv.config) : null,
+	stage: argv.stage,
+	command: argv.cmd || 'migrate',
+	host: argv.host || 'us-cdbr-iron-east-05.cleardb.net',
+	port: argv.port || 3306,
+	database: argv.database || 'heroku_219ef2c5e28088e',
+	username: argv.username || 'b20b71d564db04',
+	password: argv.password || '78040612',
+	outoforder: argv.outoforder || false
+};
+
+if (options.config) {
+	const config = require(options.config);
+	if (config && config[options.stage]) {
+		_.extend(options, config[options.stage]);
+	}
+}
+
+console.log('About to ' + options.command + ' ' + options.username + '@' + options.host + ':' + options.port + '/' + options.database);
+
+prompt.start();
+const promptQuestion = 'Are you sure? (y/n)';
+prompt.get([promptQuestion], function (err, result) {
+	if (result[promptQuestion] === 'y') {
+		const cmd = 'flyway -url=jdbc:mysql://' + options.host + ':' + options.port + '/' + options.database + ' -user=' + options.username + ' -password=' + options.password + ' -locations="filesystem:' + __dirname + '/../migrations/" -outOfOrder=' + (options.outoforder ? 'true' : 'false') + ' ' + options.command;
+		childprocess.exec(cmd, function (err, stdout, stderr) {
+			console.log(stdout);
+			if (err) {
+				console.log(stderr);
+				process.exit(1);
+			}
+		});
+	}
+});

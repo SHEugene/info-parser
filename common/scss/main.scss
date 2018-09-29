@@ -1,0 +1,142 @@
+/*@import "../../node_modules/react-select/scss/components";
+//@import "../../node_modules/react-select/scss/control";
+@import "../../node_modules/react-select/scss/default";
+@import "../../node_modules/react-select/scss/menu";
+@import "../../node_modules/react-select/scss/mixins";
+@import "../../node_modules/react-select/scss/multi";
+@import "../../node_modules/react-select/scss/select";
+@import "../../node_modules/react-select/scss/spinner";*/
+@import 'lib/variables';
+@import 'lib/mixins';
+$container-width: 550px;
+$screen-xs-max: 550px;
+@media ( max-width: $screen-xs-max ) {
+  .main-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  //background-color: lightblue;
+}
+
+@media screen and (min-width: 400px) {
+  body {
+   // background-color: red;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    //background-color: blue;
+  }
+}
+@media only screen and (max-device-width: 480px) {
+  body {
+    //background-color: green;
+  }
+  .navbar {
+    height: 150px;
+    .container {
+      .navbar-collapse {
+        .nav {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+.logo-main {
+  width: 320px;
+  margin: 40px auto;
+  height: 100px;
+  background-image: url(/public/image/main-logo-color.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% auto;
+  text-indent: -9999em;
+
+  @media (max-width: $screen-xs-max) {
+    margin: 16px auto 0 auto;
+    width: 213px;
+    height: 49px;
+  }
+}
+
+.panel-main {
+  margin: 0 auto;
+  max-width: $container-width;
+  background-color: #fff;
+  @include border-radius(2px);
+  @include box-shadow(0px 0px 30px 0px rgba(50, 50, 50, 0.3));
+  padding: 35px 65px;
+  margin-bottom: 30px;
+  border-width: 0;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.form-group {
+  margin: 0 0 10px 0;
+  padding-right: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+.form-group .input-icon {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  z-index: 1000;
+  line-height: 49px;
+  font-size: 1.5em;
+  color: #b7b7b7;
+}
+
+.form-control {
+  border: 1px solid #b7b7b7;
+  @include border-radius(2px);
+  background-color: #f9f9f9;
+  font-weight: 600;
+  font-size: 2em;
+  color: $text-color !important;
+  @include box-shadow(inset 2px 2px 6px 0px rgba(50, 50, 50, 0.2));
+}
+input.form-control, select.form-control {
+  height: 48px;
+  padding: 10px 20px;
+}
+.form-group input.form-control {
+  padding-left: 50px;
+}
+.form-group select.form-control {
+  padding-left: 50px;
+}
+.form-group textarea.form-control {
+  padding: 10px 20px 10px 50px;
+}
+
+.btn-cta {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 48px;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.3);
+  box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.3);
+  font-size: 1.1em;
+}
+
+.btn-block {
+  height: 48px;
+}

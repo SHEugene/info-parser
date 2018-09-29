@@ -1,1 +1,1 @@
-info-parser
+express-webpack-react
