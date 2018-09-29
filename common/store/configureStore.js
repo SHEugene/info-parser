@@ -4,7 +4,7 @@ import rootReducer from '../reducers'
 import { routerMiddleware } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
-import { redirect } from '../middlewares/redirect'
+
 
 const configureStore = (history, preloadedState) => {
 	const logger = createLogger();
@@ -12,7 +12,6 @@ const configureStore = (history, preloadedState) => {
 		applyMiddleware(
 			thunk,
 			logger,
-			redirect,
 			routerMiddleware(history),
 			promiseMiddleware()
 		)

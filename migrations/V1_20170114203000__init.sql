@@ -19,16 +19,14 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-# Export of table Tenant
-# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `Info`;
 
 CREATE TABLE `Info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `header` varchar(255) DEFAULT NULL,
-  `imagePath` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
+  `header` LONGTEXT DEFAULT NULL,
+  `imagePath` LONGTEXT DEFAULT NULL,
+  `description` LONGTEXT DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)

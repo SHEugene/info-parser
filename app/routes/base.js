@@ -1,8 +1,8 @@
+const infoService = requireApp('services/infoService');
 
 module.exports = function (router, passport) {
-
-
-	router.get('/api/main', function (req, res) {
-			res.json({message: 'success'});
+	router.get('/info', async function (req, res) {
+		const  allInfo = await infoService.getAllInfo();
+		res.json(allInfo);
 	});
 };

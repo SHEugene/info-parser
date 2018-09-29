@@ -1,15 +1,9 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import user from './user'
-import registration from './registration'
-import languages from './languages'
-import notificationSystem from './notificationSystem'
+import info from './info'
 
 const rootReducer = combineReducers({
-    user,
-    registration,
-    languages,
-    notificationSystem,
+    info,
     routing: routerReducer
 });
 

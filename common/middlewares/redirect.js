@@ -1,8 +1,6 @@
+/*
 import { browserHistory } from 'react-router'
 
-import {
-	ROUTING
-} from '../constants/Routing'
 
 export const redirect = store => next => action => { //eslint-disable-line no-unused-vars
 	if (action.type === ROUTING) {
@@ -11,3 +9,4 @@ export const redirect = store => next => action => { //eslint-disable-line no-un
 
 	return next(action)
 };
+*/

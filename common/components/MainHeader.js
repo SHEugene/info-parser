@@ -5,8 +5,10 @@ class MainHeader extends  React.Component {
 
     render() {
         return (
-            <div style={{background:'green'}}>
-                'хуй'
+            <div className='mainHeader'>
+              <div className='headerFont'>
+                  Тут вы увидете самые свежие новости со всех сайтов
+              </div>
             </div>
         );
     }

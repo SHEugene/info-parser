@@ -6,6 +6,7 @@
 @import "../../node_modules/react-select/scss/multi";
 @import "../../node_modules/react-select/scss/select";
 @import "../../node_modules/react-select/scss/spinner";*/
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Saira+Extra+Condensed|Open+Sans+Condensed:300|Oswald');
 @import 'lib/variables';
 @import 'lib/mixins';
 $container-width: 550px;
@@ -21,7 +22,7 @@ html {
 }
 
 body {
-  //background-color: lightblue;
+  background-color: lightblue;
 }
 
 @media screen and (min-width: 400px) {
@@ -139,4 +140,20 @@ input.form-control, select.form-control {
 
 .btn-block {
   height: 48px;
+}
+
+
+.mainHeader {
+  background: rgba(155,155,155,0.6);
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerFont{
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 30pt;
+}
+.descriptionFont {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 15pt;
 }
