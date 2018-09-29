@@ -1,9 +1,9 @@
 module.exports = {
 	project: {
-		name: 'reactTemplate'
+		name: 'Info-Parser'
 	},
 	site: {
-		name: 'Sorg\'s Template'
+		name: 'Info-Parser'
 	},
 	database: {
 		host: 'localhost',

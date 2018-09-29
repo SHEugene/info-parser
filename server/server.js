@@ -126,11 +126,9 @@ errorHandler(app, 'error');
 
 function handleRender(req, res) {
 	// Query our mock API asynchronously
-	const user = {
-		fullName: 'Guest'
-	};
+	const info = [];
 	// Compile an initial state
-	const preloadedState = { user };
+	const preloadedState = { info };
 
 	// Create a new Redux store instance
 	const memoryHistory = createMemoryHistory(req.url);

@@ -29,7 +29,7 @@ const options = {
 	config: argv.config ? path.join(__dirname, '..', argv.config) : null,
 	stage: argv.stage,
 	command: argv.cmd || 'migrate',
-	host: argv.host || 'us-cdbr-iron-east-05.cleardb.net',
+	host: argv.host || 'localhost',
 	port: argv.port || 3306,
 	database: argv.database || 'parser',
 	username: argv.username || 'root',
