@@ -1,10 +1,9 @@
 var cron = require('node-cron');
-const config = require('config');
-const lugg = requireApp('lib/logger');
-const logger = lugg(config.get('project.name'));
-
+const logger = requireLogger('schedulerParser');
+const parserController = requireApp('controllers/parserController')
 const parser = cron.schedule('* * * * *', () => {
-	logger.info('running every minute 1, 2, 4 and 5');
+	logger.info('parsing started ');
+	parserController.parseURL();
 },{
 	scheduled: false
 });
