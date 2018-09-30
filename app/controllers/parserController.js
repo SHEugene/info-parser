@@ -25,7 +25,13 @@ module.exports = {
 								header = header[0].children[0].data;
 							}
 						//parse text
-							
+							const paragraphs = $('#content-main > p');
+
+							if(paragraphs.length > 0) {
+								_.map(paragraphs, function (p) {
+                                    const text =  _.filter(p.children, (child) =>(child.type ==='text'));
+								})
+							}
 
 						}
 					})
