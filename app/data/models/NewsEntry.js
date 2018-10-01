@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
         imagePath: {
             type: DataTypes.STRING,
             validate: {
-                notEmpty: true
+                notEmpty: false
             }
         },
         description: {

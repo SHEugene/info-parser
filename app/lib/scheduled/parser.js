@@ -3,11 +3,13 @@ const logger = requireLogger('schedulerParser');
 const parserController = requireApp('controllers/parserController')
 const parser = cron.schedule('* * * * *', () => {
 	logger.info('parsing started ');
-	parserController.parseURL();
+	try{
+		parserController.parseURL();
+	}catch (e) {
+
+	}
+
 },{
 	scheduled: false
 });
-
-
-
 export default parser;
