@@ -89,6 +89,7 @@
   "devDependencies": {
     "mocha": "^5.2.0",
     "prompt": "^1.0.0",
+    "sinon": "^6.3.5",
     "sync-multilanguage-json": "^1.0.3"
   }
 }
