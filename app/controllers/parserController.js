@@ -17,7 +17,7 @@ module.exports = {
 						if (err){
 							throw  err;
 						}
-						const newsEntity = getNewEntityFromBody(body);
+						const newsEntity = getNewEntityFromBody(body,link);
 						if(newsEntity) {
 							return newsEntity;
 						}
@@ -34,13 +34,15 @@ module.exports = {
 	   	return links;
 	   } else return [];
 	},
-	getNewEntityFromBody(body) {
+	getNewEntityFromBody(body,link) {
 		if (!_.includes(body, NO_ACCESS)) {
 			let $ = cheerio.load(body);
 			// parse header
 			let header = $('.post-title');
 			if (header.length > 0) {
 				header = header[0].children[0].data;
+			} else {
+				header = 'No header';
 			}
 			//parse text
 			const paragraphs = $('#content-main > p').contents();
@@ -57,7 +59,7 @@ module.exports = {
 				return null;
 			}
 
-			if (header && texts) {
+			if (texts) {
 				return {
 					header: header,
 					description: texts,
@@ -67,6 +69,9 @@ module.exports = {
 				return null
 			}
 
+		}
+		else {
+			throw Error('No Access o the site')
 		}
 	}
 }
