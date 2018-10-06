@@ -87,8 +87,11 @@
     "webpack-merge": "^4.1.1"
   },
   "devDependencies": {
+    "fs-extra": "^7.0.0",
     "mocha": "^5.2.0",
     "prompt": "^1.0.0",
+    "should": "^13.2.3",
+    "should-sinon": "0.0.6",
     "sinon": "^6.3.5",
     "sync-multilanguage-json": "^1.0.3"
   }
