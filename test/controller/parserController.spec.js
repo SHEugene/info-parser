@@ -1,9 +1,10 @@
 const parserController = requireApp('controllers/parserController');
 const should = require('should');
-var fs = require('fs');
-var path = require('path');
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 describe('getLinks',function () {
-	it('should return 3 links',  function () {
+	it('should return 27 links',  function () {
 		const body =   fs.readFileSync(path.join(__dirname,'mocks/linkPage.html'),'utf8');
 		const result = parserController.getLinks(body);
 		result.length.should.be.equal(27)
@@ -11,7 +12,7 @@ describe('getLinks',function () {
 	it('should return 0 links',  function () {
 		const body =   fs.readFileSync(path.join(__dirname,'mocks/empty.html'),'utf8');
 		const result = parserController.getLinks(body);
-		result.length.should.be.equal(3)
+		result.length.should.be.equal(0)
 	})
 });
 
@@ -25,18 +26,7 @@ describe('getNewEntityFromBody',function () {
 		catch (e) {
 			ex = e
 		}
-		ex.should.be.nonNull();
-	});
-	it('should be throws exception when permission denied  ',function () {
-		const body =   fs.readFileSync(path.join(__dirname,'mocks/withoutAccess.html'),'utf8');
-		let ex = null;
-		try {
-			const result = parserController.getNewEntityFromBody(body);
-		}
-		catch (e) {
-			ex = e
-		}
-		ex.should.be.nonNull();
+		ex.should.not.be.equal(null);
 	});
 	it('should returns header - No header  ',function () {
 		const body =   fs.readFileSync(path.join(__dirname,'mocks/withoutHeader.html'),'utf8');
@@ -46,16 +36,16 @@ describe('getNewEntityFromBody',function () {
 	it('should returns null - without paragraphs',function () {
 		const body =   fs.readFileSync(path.join(__dirname,'mocks/withoutParagraphs.html'),'utf8');
 		const result = parserController.getNewEntityFromBody(body);
-		result.should.be.equal(null);
+		assert.equal(result,null);
 	});
 	it('should returns null - without texts',function () {
 		const body =   fs.readFileSync(path.join(__dirname,'mocks/withoutText.html'),'utf8');
 		const result = parserController.getNewEntityFromBody(body);
-		result.should.be.equal(null);
+		assert.equal(result,null);
 	});
-	it('should returns null newsEntity',function () {
+	it('should returns not null newsEntity',function () {
 		const body =   fs.readFileSync(path.join(__dirname,'mocks/mainPage.html'),'utf8');
-		const result = parserController.getNewEntityFromBody(body);
+		const result = parserController.getNewEntityFromBody(body,'http://google.com');
 		result.header.should.not.be.equal(null);
 		result.link.should.not.be.equal(null);
 		result.description.should.not.be.equal(null);

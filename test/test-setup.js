@@ -1,14 +1,18 @@
 global.requireApp = function (path) {
 	return require('../app/' + path);
 };
-
 var models = requireApp('data/models');
 
 // Error on direct access to mysql (last catch)
 models.sequelize.connectionManager.dialect.Query.prototype.run = function (query) {
 	throw new Error('Access to Database is denied in unit tests (' + query + ')');
 };
-
+const config = require('config');
+global.requireLogger = function (moduleName) {
+	return require('lugg')(config.get('project.name') + ':'+ moduleName);
+};
+const lugg = requireApp('lib/logger');
+lugg('express');
 // Error when accessing a sequelize model (we do not want db access in unit tests)
 // Error here b/c this way we can show where exactly the error comes from
 Object.keys(models).forEach(function (modelName) {
