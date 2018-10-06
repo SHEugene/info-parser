@@ -52,6 +52,20 @@ body {
   }
 }
 
+.news-container {
+  justify-content: space-between;
+}
+
+.news_header {
+  font-style: italic;
+  margin-left: 20px;
+  word-break: break-all;
+}
+
+.news-description {
+  margin: 50px;
+}
+
 .logo-main {
   width: 320px;
   margin: 40px auto;

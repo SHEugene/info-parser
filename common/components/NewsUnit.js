@@ -8,11 +8,11 @@ class NewsUnit extends  React.Component {
 	render() {
 		const {news} = this.props;
 		return ( news ?
-				(<div>
-					<div className='row'>
+				(<div className='news-container'>
+					<div className='row news_header'>
 						{news.header}
 					</div>
-					<div className='row'>
+					<div className='row news-description ' >
 						{news.description}
 					</div>
 				</div> ): null
